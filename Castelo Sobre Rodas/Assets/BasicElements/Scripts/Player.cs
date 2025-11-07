@@ -1,12 +1,12 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour
+public class PlayableCharacter : MonoBehaviour
 {
 
-    public Rigidbody2D rb;
-    public Animator animator;
-    public InputActionReference Move;
+    private Rigidbody2D rigidBody;
+    private Animator animator;
+    public InputActionReference movementInput;
 
     public float moveSpeed;
 
@@ -14,15 +14,18 @@ public class Player : MonoBehaviour
 
 
 
-
-
+	private void Start()
+	{
+		rigidBody = GetComponent<Rigidbody2D>();
+		animator = GetComponent<Animator>();
+	}
     private void OnEnable()
     {
-        Move.action.Enable(); 
+        movementInput.action.Enable(); 
     }
     private void OnDisable()
     {
-        Move.action.Disable();
+        movementInput.action.Disable();
     }
 
 
@@ -44,10 +47,10 @@ public class Player : MonoBehaviour
     }
 
 
-    private void Update()
+    public virtual void Update()
     {
         // Altera moveDirection todos os frames
-        moveDirection = Move.action.ReadValue<Vector2>();
+        moveDirection = movementInput.action.ReadValue<Vector2>();
 
         // Faz a animação usando moveDirection todos os frames
         int directionCode = GetCardinalDirection(moveDirection);
@@ -55,8 +58,9 @@ public class Player : MonoBehaviour
     }
 
 
-    private void FixedUpdate()
+    public virtual void FixedUpdate()
     {
-        rb.linearVelocity = moveDirection * moveSpeed; // Aplica movimentação
+		// Aplica movimentação quando o frame não for pulado
+        rigidBody.linearVelocity = moveDirection * moveSpeed;
     }
 }
