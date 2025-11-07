@@ -19,6 +19,7 @@ public class PlayableCharacter : MonoBehaviour
 		rigidBody = GetComponent<Rigidbody2D>();
 		animator = GetComponent<Animator>();
 	}
+
     private void OnEnable()
     {
         movementInput.action.Enable(); 
