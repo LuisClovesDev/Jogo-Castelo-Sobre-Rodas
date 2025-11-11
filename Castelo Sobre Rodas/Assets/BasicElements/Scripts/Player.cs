@@ -7,6 +7,8 @@ public class PlayableCharacter : MonoBehaviour
     private Rigidbody2D rigidBody;
     private Animator animator;
     public InputActionReference movementInput;
+	public InputActionReference primaryInput;
+	public InputActionReference secondaryInput;
 
     public float moveSpeed;
 
@@ -23,10 +25,14 @@ public class PlayableCharacter : MonoBehaviour
     private void OnEnable()
     {
         movementInput.action.Enable(); 
+        primaryInput.action.Enable(); 
+        secondaryInput.action.Enable(); 
     }
     private void OnDisable()
     {
         movementInput.action.Disable();
+        primaryInput.action.Disable(); 
+        secondaryInput.action.Disable(); 
     }
 
 
@@ -39,14 +45,13 @@ public class PlayableCharacter : MonoBehaviour
 
         if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
         {
-            if (direction.x > 0) {return 1;} else {return 3;};
+            if (direction.x > 0) return 1; else return 3;
         }
         else
         {
-            if (direction.y > 0) {return 2;} else {return 4;}
+            if (direction.y > 0) return 2; else return 4;
         }
     }
-
 
     public virtual void Update()
     {
