@@ -3,13 +3,16 @@ using UnityEngine.InputSystem;
 
 public class Soldier : PlayableCharacter
 {
-
-	public void OnPrimaryInput(InputAction.CallbackContext context)
+	
+	public override void RightClickAction(InputAction.CallbackContext context)
 	{
-		if (context.performed)
+		if (context.canceled)
 		{
-			var tapPoint = context.ReadValue<Vector2>();
-			Debug.Log(tapPoint);
+			moveSpeed = moveSpeed * 2;
+		}
+		else if (context.performed)
+		{
+			moveSpeed = moveSpeed / 2;
 		}
 	}
 
