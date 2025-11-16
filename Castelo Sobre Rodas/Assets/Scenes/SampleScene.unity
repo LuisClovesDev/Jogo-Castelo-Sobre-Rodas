@@ -444,6 +444,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+<<<<<<< Updated upstream
+=======
+--- !u!114 &799156521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799156512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbb2047983cc1b72381490e9fded061a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0
+  isInvincible: 0
+  Soldado_reference: {fileID: 11400000, guid: b46c5c4c19e2d9d47b0e21458b1c3c96, type: 2}
+>>>>>>> Stashed changes
 --- !u!1 &812639623
 GameObject:
   m_ObjectHideFlags: 0
