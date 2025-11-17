@@ -15,22 +15,13 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "MousePosition",
+                    "name": "LeftClick",
                     "type": "Value",
-                    "id": "cc006853-698b-4399-bc21-8f4ef11a8d4c",
+                    "id": "3a50fced-33d1-4aa4-886e-096006e09d0d",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "LeftClick",
-                    "type": "Button",
-                    "id": "3a50fced-33d1-4aa4-886e-096006e09d0d",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 },
                 {
                     "name": "RightClick",
@@ -39,7 +30,7 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -99,53 +90,42 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "892c0adb-5184-486f-9e34-83b26d7216b5",
-                    "path": "<Mouse>/position",
+                    "name": "One Modifier",
+                    "id": "1c4a7f5d-4e15-482f-b85e-4ece0253d8d0",
+                    "path": "OneModifier",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MousePosition",
-                    "isComposite": false,
+                    "action": "LeftClick",
+                    "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "9b279fce-b176-4cf2-bf22-808feff634e7",
+                    "name": "modifier",
+                    "id": "f2cda4f6-6fc1-45ca-8f39-0293f7020020",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "LeftClick",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "5c615820-6f9f-4f34-bbb6-003ea47eada8",
-                    "path": "<Keyboard>/z",
+                    "name": "binding",
+                    "id": "e6f39612-2b10-478b-b4c0-141a0ea8be94",
+                    "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "LeftClick",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
-                    "id": "5495b531-9d36-452a-b7b9-f05dc1302158",
+                    "id": "1e3e7741-e1f6-4643-8ccd-0ec886a5e40b",
                     "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RightClick",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ad4a1568-7f49-47aa-8e85-3902ac93132a",
-                    "path": "<Keyboard>/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -163,6 +143,11 @@
             "devices": [
                 {
                     "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
                     "isOptional": false,
                     "isOR": false
                 }

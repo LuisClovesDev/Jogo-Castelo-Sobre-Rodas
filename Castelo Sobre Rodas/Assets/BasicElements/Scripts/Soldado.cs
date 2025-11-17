@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class Soldier : PlayableCharacter
 {
-	
+
 	public override void RightClickAction(InputAction.CallbackContext context)
 	{
 		if (context.canceled)
