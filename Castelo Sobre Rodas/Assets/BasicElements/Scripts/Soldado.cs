@@ -5,6 +5,7 @@ public class Soldado : PlayableCharacter
 {
     public Classe_DATA Soldado_reference;
 
+
     protected override void OnStart()
     {
         if (Soldado_reference != null)
