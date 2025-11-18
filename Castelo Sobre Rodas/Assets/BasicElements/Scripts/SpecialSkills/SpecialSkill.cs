@@ -1,8 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-// Classe base abstrata — NÃO é instanciável
-public abstract class DATA_SpecialSkillBase : ScriptableObject
+// Classe base abstrata, NÃO é instanciável
+public abstract class SpecialSkill : ScriptableObject
 {
     public string displayName;
     public float cooldown;
