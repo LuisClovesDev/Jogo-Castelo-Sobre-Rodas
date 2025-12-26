@@ -38,10 +38,9 @@ public abstract class PlayableCharacter : MonoBehaviour
     }
 
 
-    public virtual void ApplyMovement(InputAction.CallbackContext context)
+    public virtual void ApplyMovement(Vector2 direction)
     {
-        moveDirection = context.ReadValue<Vector2>();
-
+        moveDirection = direction;
         animator.SetInteger("Direction", GetCardinalDirection(moveDirection));
     }
 
@@ -52,16 +51,13 @@ public abstract class PlayableCharacter : MonoBehaviour
     }
 
     // Hooks para inputs (serão sobrescritos)
-    protected virtual void LeftClickAction(InputAction.CallbackContext context) { }
-    protected virtual void RightClickAction(InputAction.CallbackContext context)
+    protected virtual void LeftClickAction(bool pressed) { }
+
+    protected virtual void RightClickAction(bool pressed)
     {
-        if (context.performed)
-        {
-            playerClass.specialSkill.OnPerformed(this, context);
-        }
-        else if (context.canceled)
-        {
-            playerClass.specialSkill.OnCanceled(this, context);
-        }
+        if (pressed)
+            playerClass.specialSkill.OnPerformed(this);
+        else
+            playerClass.specialSkill.OnCanceled(this);
     }
 }
