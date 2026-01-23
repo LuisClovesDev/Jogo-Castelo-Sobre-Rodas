@@ -29,4 +29,4 @@ MonoBehaviour:
     moveSpeed: 0
     range: 0
     specialRecharge: 0
-  specialSkill: {fileID: 0}
+  specialSkill: {fileID: 11400000, guid: 11673d8efe63e169d9c0d8ff226abbc8, type: 2}
