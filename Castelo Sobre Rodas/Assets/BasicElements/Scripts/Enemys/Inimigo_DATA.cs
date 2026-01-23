@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "Inimigo_DATA", menuName = "Scriptable Objects/Inimigo_DATA")]
+[CreateAssetMenu(fileName = "Inimigo_DATA", menuName = "Inimigos /Inimigo_DATA")]
 public class Inimigo_DATA : ScriptableObject
 {
     public string enemyName;                    //NOME

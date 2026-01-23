@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     void OnEnable()
     {
         currentHP = data.maxHP;
-        transform.localScale = Vector3.one * data.size;
+        transform.localScale = Vector2.one * data.size;
 
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -82,7 +82,7 @@ public class Enemy : MonoBehaviour
             separationRadius
         );
 
-        Vector3 separation = Vector3.zero;
+        Vector3 separation = Vector2.zero;
         int count = 0;
 
         foreach (var hit in hits)
