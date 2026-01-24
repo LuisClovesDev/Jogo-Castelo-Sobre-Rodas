@@ -11,8 +11,8 @@ public class Enemy : MonoBehaviour
 
     void OnEnable()
     {
-        currentHP = data.maxHP;
-        transform.localScale = Vector2.one * data.size;
+        currentHP = data.Vida_Maxima;
+        transform.localScale = Vector2.one * data.Tamanho;
 
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -70,7 +70,7 @@ public class Enemy : MonoBehaviour
             moveDir * playerWeight +
             separation * separationStrength;
 
-        transform.position += finalMove * data.speed * Time.deltaTime;
+        transform.position += finalMove * data.Velocidade * Time.deltaTime;
     }
 
     [SerializeField] float separationRadius = 0.6f;

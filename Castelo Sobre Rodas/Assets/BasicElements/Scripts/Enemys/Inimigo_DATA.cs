@@ -4,14 +4,15 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Inimigo_DATA", menuName = "Inimigos /Inimigo_DATA")]
 public class Inimigo_DATA : ScriptableObject
 {
-    public string enemyName;                    //NOME
+    public string Nome_do_Inimigo;                     //NOME
+    public int Nivel_de_Desafio;                      // NIVEL DE DIFICULDADE
 
-    public float maxHP;                         // VIDA MAXIMO
-    public float speed;                         // VELOCIDADE DE MOVIMENTO
-    public float damage;                        // DANO
-    public int xpValue;                         //VALOR DE XP
+    public float Vida_Maxima;                          // VIDA MAXIMO
+    public float Velocidade;                          // VELOCIDADE DE MOVIMENTO
+    public float Dano;                               // DANO
+    public int Valor_de_XP;                         //VALOR DE XP
 
-    public float size;
+    public float Tamanho;
 
     public EnemyBehaviorType behaviorType;
 
