@@ -56,7 +56,7 @@ public class Nuvem_IA : MonoBehaviour
     void LocalizarJogador()
     {
         if 
-            (LocalizadorDeObjetos.Tentarencontrarúnicocomtag(playerTag, out player))
+            (LocalizadorDeObjetos.TentarencontrarUnicocomtag(playerTag, out player))
             Debug.Log($"[LocalizarJogador] Jogador encontrado: {player.name}", player);
         
     }

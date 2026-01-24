@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class LocalizadorDeObjetos
 {
-    public static bool Tentarencontrarúnicocomtag(string tag, out GameObject result)
+    public static bool TentarencontrarUnicocomtag(string tag, out GameObject result)
     {
         result = null;
 
@@ -17,7 +17,7 @@ public class LocalizadorDeObjetos
 
         if (objects.Length > 1)
         {
-            Debug.LogError($"[SceneObjectFinder] Mais de um GameObject com a tag '{tag}' foi encontrado! Ação cancelada.");
+            Debug.LogError($"[SceneObjectFinder] Mais de um GameObject com a tag '{tag}' foi encontrado! Acao cancelada.");
             foreach (var obj in objects)
             {
                 Debug.Log($" - Encontrado: {obj.name}", obj);
@@ -30,7 +30,7 @@ public class LocalizadorDeObjetos
         return true;
     }
     //----------------------------------------------
-    public static List<Chuvas_Object> LocalizarTodosOsChuvas()
+    public static List<Chuvas_Object>  LocalizarTodosOsChuvas()
     {
         Chuvas_Object[] encontrados = Resources.LoadAll<Chuvas_Object>("Chuvas");
 
