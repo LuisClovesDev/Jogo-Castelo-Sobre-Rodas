@@ -9,7 +9,7 @@
 // INFORMAÇÕES PARA COLETAR: JOGADOR  .   "CHUVAS" / ONDAS DISPONIVEIS . SENÁRIO ATUAL . CASTELO//
 //
 // PART 02:
-// A NUVEM PROJETARA COMO SERÁ TODAS AS CHAVAS, A INTENSIDADE E A FORMA QUE ELAS OCORRERAM, ELA IRA 
+// A NUVEM PROJETARA COMO SERÁ TODAS AS CHUVAS, A INTENSIDADE E A FORMA QUE ELAS OCORRERAM, ELA IRA 
 // DEFINIR COMO SERÁ O "DIA".
 //
 // -> A NUVEM IRÁ VERIFICAR EM CADA ONDA:
@@ -44,6 +44,7 @@
 
 using NUnit.Framework;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Nuvem_IA : MonoBehaviour
@@ -61,15 +62,54 @@ public class Nuvem_IA : MonoBehaviour
     }
     // -------------------------------------- PART 01: COLETA DE JOGADOR -------------------- //
 
-    // PART 02: COLETA "CHUVAS" / ONDAS DISPONIVEIS
+    // PART 01: COLETA "CHUVAS" / ONDAS DISPONIVEIS
     public List<Chuvas_Object> listaDeChuvas = new List<Chuvas_Object>();// REFERÊNCIA AS CHUVAS ENCONTRADAS
-    // LOCALIZA O NUMERO DE CHUVAS E INDENTIFICA-AS PELO NOME
-    void LocalizarChuvas()
+                                                                         // LOCALIZA O NUMERO DE CHUVAS E INDENTIFICA-AS PELO NOME
+    List<Chuvas_Object> LocalizarChuvas()
     {
         listaDeChuvas = LocalizadorDeObjetos.LocalizarTodosOsChuvas();
         string nomes = string.Join(", ", listaDeChuvas.ConvertAll(c => c.name));
         Debug.Log($"[LocalizarChuvas] Chuvas encontradas: {listaDeChuvas.Count} | {nomes}");
+
+       if(listaDeChuvas != null)
+        {
+            return listaDeChuvas;
+        }
+       else
+        {
+            return null;
+        }
     }
+
+    // -------------------------------------- PART 01: COLETA DE CHUVA -------------------- //
+    // DEFINIÇÃO DE RUN / DIA
+    // CADA DIA TERÁ UMA MÉDIA DE 10 CHUVAS, MAS NÃO SERÁ NECESSÁRIAMENTE CHUVAS PODERAM SER DIAS ENSOLARADOS = SEM INIMIGOS.
+    // PARA MOMENTOS SEM CHUVA HAVERÁ UM TIMER PARA DEFINIR O FIM
+    // PARA CADA CHUVA O FIM SERÁ DEFINIDO APENAS QUANDO O ULTIMO INIMIGO MORRER.
+
+    public int Chuva_Atual;
+    public int Minimo_de_Chuvas = 10;
+
+    public void Gerar_Chuva()
+    {
+        List<Chuvas_Object> chuvas = LocalizarChuvas();
+        int quantidade_de_chuvas = listaDeChuvas.Count;
+        if(quantidade_de_chuvas < Minimo_de_Chuvas)
+        {
+            Debug.Log(
+                "A Quantidade de chuvas coletadas está abaixo do minimo exigido \n"+
+                "Chuavas Coletadas" +quantidade_de_chuvas + "\n" +
+                "Chuvas necessárias" +Minimo_de_Chuvas
+                );
+            return;
+        }
+        else
+        {
+            //ALEATORIZADOR DE CHUVA
+        }
+
+    }
+
 
     private void Awake()
     {
