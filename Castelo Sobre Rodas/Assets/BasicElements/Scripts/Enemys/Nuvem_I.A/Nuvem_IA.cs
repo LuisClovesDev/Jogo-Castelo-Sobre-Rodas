@@ -93,6 +93,7 @@ public class Nuvem_IA : MonoBehaviour
     public void Gerar_Chuva()
     {
         List<Chuvas_Object> chuvas = LocalizarChuvas();
+        
         int quantidade_de_chuvas = listaDeChuvas.Count;
         if(quantidade_de_chuvas < Minimo_de_Chuvas)
         {
@@ -105,7 +106,11 @@ public class Nuvem_IA : MonoBehaviour
         }
         else
         {
-            //ALEATORIZADOR DE CHUVA
+            Debug.Log("CHUVAS: " + chuvas);
+            for(int i = 0; i < Minimo_de_Chuvas; i++)
+            {
+                Aleatorizador.SortearInimigo(chuvas[i].itens);
+            }
         }
 
     }
@@ -115,5 +120,6 @@ public class Nuvem_IA : MonoBehaviour
     {
         LocalizarJogador();
         LocalizarChuvas();
+        Gerar_Chuva();
     }
 }

@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70eb721d224d0e2429a6dbed90027752, type: 3}
   m_Name: chuva1
   m_EditorClassIdentifier: 
-  nome_da_chuva: 
-  nivel_da_chuva: 0
-  itens: []
+  nome_da_chuva: mano gui
+  nivel_da_chuva: 1
+  itens:
+  - {fileID: 11400000, guid: 81aed489ce9099944bf2f8e9c5d25f0e, type: 2}
+  - {fileID: 11400000, guid: f7ff1b96af4d85e42856a323a197fa92, type: 2}

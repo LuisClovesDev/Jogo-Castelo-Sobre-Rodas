@@ -9,10 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70eb721d224d0e2429a6dbed90027752, type: 3}
-  m_Name: chuva2
+  m_Script: {fileID: 11500000, guid: 04cc11dbb15f9c749817de06f5713c7b, type: 3}
+  m_Name: Arvore_Comum
   m_EditorClassIdentifier: 
-  nome_da_chuva: 
-  nivel_da_chuva: 0
-  itens:
-  - {fileID: 11400000, guid: 81aed489ce9099944bf2f8e9c5d25f0e, type: 2}
+  Nome_do_Inimigo: Arvore_Comum
+  Nivel_de_Desafio: 0
+  Vida_Maxima: 0
+  Velocidade: 0
+  Dano: 0
+  Valor_de_XP: 0
+  Tamanho: 0
+  behaviorType: 0

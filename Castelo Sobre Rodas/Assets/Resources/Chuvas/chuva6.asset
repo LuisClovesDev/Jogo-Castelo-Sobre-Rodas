@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70eb721d224d0e2429a6dbed90027752, type: 3}
-  m_Name: chuva2
+  m_Name: chuva6
   m_EditorClassIdentifier: 
   nome_da_chuva: 
   nivel_da_chuva: 0
