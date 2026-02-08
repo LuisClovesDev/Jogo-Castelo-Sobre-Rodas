@@ -51,6 +51,7 @@ public class EnemyDirector : MonoBehaviour
             Enemy e = Instantiate(enemyPrefab, transform);
             e.gameObject.SetActive(false);
             pool.Enqueue(e);
+            
         }
     }
 

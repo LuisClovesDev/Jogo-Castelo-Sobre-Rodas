@@ -1,5 +1,5 @@
 ﻿
-//   ☁️ ☁️ NUVEM I.A ☁️ ☁️
+//   ☁️ ☁️ CLOUD I.A ☁️ ☁️
 // 
 // CONCEITO INICIAL: REALISAR A GESTÃO GERAL DOS INIMIGOS E DO NIVEL DE DESAFIO NO GERAL
 // PARA FINS DE MELHOR INTERPRETAÇÃO DO CÓDIGO SERÁ UTILIZADO A LOGICA DE NUVEM, CHUVA E "CLIMA"
@@ -53,7 +53,7 @@ public class Nuvem_IA : MonoBehaviour
     public string playerTag = "Jogador";
     public GameObject player; // REFERÊNCIA AO JOGADOR ENCONTRADO
     // LOCALIZA O JOGADOR CASO NÃO ACHE NENHUM OU ENCONTRE MAIS DE UM AVISA VIA LOG.
-    void LocalizarJogador()
+    void Find_player()
     {
         if 
             (LocalizadorDeObjetos.TentarencontrarUnicocomtag(playerTag, out player))
@@ -63,17 +63,17 @@ public class Nuvem_IA : MonoBehaviour
     // -------------------------------------- PART 01: COLETA DE JOGADOR -------------------- //
 
     // PART 01: COLETA "CHUVAS" / ONDAS DISPONIVEIS
-    public List<Chuvas_Object> listaDeChuvas = new List<Chuvas_Object>();// REFERÊNCIA AS CHUVAS ENCONTRADAS
+    public List<Chuvas_Object> Cloud_List = new List<Chuvas_Object>();// REFERÊNCIA AS CHUVAS ENCONTRADAS
                                                                          // LOCALIZA O NUMERO DE CHUVAS E INDENTIFICA-AS PELO NOME
-    List<Chuvas_Object> LocalizarChuvas()
+    List<Chuvas_Object> FindCloud()
     {
-        listaDeChuvas = LocalizadorDeObjetos.LocalizarTodosOsChuvas();
-        string nomes = string.Join(", ", listaDeChuvas.ConvertAll(c => c.name));
-        Debug.Log($"[LocalizarChuvas] Chuvas encontradas: {listaDeChuvas.Count} | {nomes}");
+        Cloud_List = LocalizadorDeObjetos.LocalizarTodosOsChuvas();
+        string nomes = string.Join(", ", Cloud_List.ConvertAll(c => c.name));
+        Debug.Log($"[LocalizarChuvas] Chuvas encontradas: {Cloud_List.Count} | {nomes}");
 
-       if(listaDeChuvas != null)
+       if(Cloud_List != null)
         {
-            return listaDeChuvas;
+            return Cloud_List;
         }
        else
         {
@@ -90,11 +90,11 @@ public class Nuvem_IA : MonoBehaviour
     public int Chuva_Atual;
     public int Minimo_de_Chuvas = 10;
 
-    public void Gerar_Chuva()
+    public void Generate_Rain()
     {
-        List<Chuvas_Object> chuvas = LocalizarChuvas();
+        List<Chuvas_Object> chuvas = FindCloud();
         
-        int quantidade_de_chuvas = listaDeChuvas.Count;
+        int quantidade_de_chuvas = Cloud_List.Count;
         if(quantidade_de_chuvas < Minimo_de_Chuvas)
         {
             Debug.Log(
@@ -118,8 +118,8 @@ public class Nuvem_IA : MonoBehaviour
 
     private void Awake()
     {
-        LocalizarJogador();
-        LocalizarChuvas();
-        Gerar_Chuva();
+        Find_player();
+        FindCloud();
+        Generate_Rain();
     }
 }

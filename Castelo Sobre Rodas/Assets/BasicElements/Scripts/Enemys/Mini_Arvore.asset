@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04cc11dbb15f9c749817de06f5713c7b, type: 3}
   m_Name: Mini_Arvore
   m_EditorClassIdentifier: 
-  enemyName: Zequinha
-  maxHP: 1
-  speed: 1
-  damage: 1
-  xpValue: 1
-  size: 0.5
+  Nome_do_Inimigo: MiniArvore
+  Nivel_de_Desafio: 1
+  Vida_Maxima: 10
+  Velocidade: 5
+  Dano: 5
+  Valor_de_XP: 5
+  Tamanho: 0.5
   behaviorType: 0
