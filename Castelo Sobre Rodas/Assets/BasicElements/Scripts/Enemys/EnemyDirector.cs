@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class EnemyDirector : MonoBehaviour
 {
     [Header("Referências")]
-    public Enemy enemyPrefab;
+    public static Enemy enemyPrefab;
     public List<Inimigo_DATA> enemyTypes;
 
     [Header("Spawn")]

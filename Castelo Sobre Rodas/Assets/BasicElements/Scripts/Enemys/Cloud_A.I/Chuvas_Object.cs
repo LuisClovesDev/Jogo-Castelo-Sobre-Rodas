@@ -7,6 +7,7 @@ public class Chuvas_Object : ScriptableObject
     public string nome_da_chuva;
     public int nivel_da_chuva;
 
-    public List<Inimigo_DATA> itens = new List<Inimigo_DATA>();
+    public int enemiesnumber;
+    public List<Inimigo_DATA> Creature = new List<Inimigo_DATA>();
 
 }

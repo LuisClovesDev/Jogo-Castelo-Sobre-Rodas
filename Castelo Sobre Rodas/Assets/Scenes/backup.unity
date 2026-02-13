@@ -633,7 +633,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &450947158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1234,7 +1234,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1361135410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1739,7 +1739,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1721068413
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1958,9 +1958,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTag: Player
   player: {fileID: 0}
-  listaDeChuvas: []
-  Chuva_Atual: 0
-  Minimo_de_Chuvas: 10
+  Cloud_List: []
+  CurrentRain: 0
+  MinimumRainfall: 10
 --- !u!4 &1984253319
 Transform:
   m_ObjectHideFlags: 0
