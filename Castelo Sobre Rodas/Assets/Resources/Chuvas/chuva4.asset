@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome_da_chuva: 
   nivel_da_chuva: 0
-  itens:
+  enemiesnumber: 10
+  Creature:
   - {fileID: 11400000, guid: 81aed489ce9099944bf2f8e9c5d25f0e, type: 2}

@@ -13,6 +13,7 @@ public class Inimigo_DATA : ScriptableObject
     public int Valor_de_XP;                         //VALOR DE XP
 
     public float Tamanho;
+    public GameObject prefab;
 
     public EnemyBehaviorType behaviorType;
 

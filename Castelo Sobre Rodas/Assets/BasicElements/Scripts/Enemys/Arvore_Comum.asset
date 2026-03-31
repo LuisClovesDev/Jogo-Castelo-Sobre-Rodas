@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Arvore_Comum
   m_EditorClassIdentifier: 
   Nome_do_Inimigo: Arvore_Comum
-  Nivel_de_Desafio: 0
-  Vida_Maxima: 0
-  Velocidade: 0
-  Dano: 0
-  Valor_de_XP: 0
-  Tamanho: 0
+  Nivel_de_Desafio: 1
+  Vida_Maxima: 10
+  Velocidade: 5
+  Dano: 5
+  Valor_de_XP: 5
+  Tamanho: 0.5
+  prefab: {fileID: 6856309790520553500, guid: 8199a8038a8766d42aea2638edaeffb6, type: 3}
   behaviorType: 0

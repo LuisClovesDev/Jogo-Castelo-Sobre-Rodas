@@ -1,95 +1,169 @@
-﻿
-//   ☁️ ☁️ CLOUD I.A ☁️ ☁️
-// 
-// CONCEITO INICIAL: REALISAR A GESTÃO GERAL DOS INIMIGOS E DO NIVEL DE DESAFIO NO GERAL
-// PARA FINS DE MELHOR INTERPRETAÇÃO DO CÓDIGO SERÁ UTILIZADO A LOGICA DE NUVEM, CHUVA E "CLIMA"
-// 
-// PART 01:
-// A NUVEM IRÁ CAPTURAR E ARMAZENAR INFORMAÇÕES IMPORTANTES ANTES DE INICIAR OS TRABALHO
-// INFORMAÇÕES PARA COLETAR: JOGADOR  .   "CHUVAS" / ONDAS DISPONIVEIS . SENÁRIO ATUAL . CASTELO//
-//
-// PART 02:
-// A NUVEM PROJETARA COMO SERÁ TODAS AS CHUVAS, A INTENSIDADE E A FORMA QUE ELAS OCORRERAM, ELA IRA 
-// DEFINIR COMO SERÁ O "DIA".
-//
-// -> A NUVEM IRÁ VERIFICAR EM CADA ONDA:
-// TIPOS DE INIMIGOS QUE VIRAM
-// QUANTIDADE DE INIMIGOS
-// NIVEL DA CHUVA
-// -> COM ISSO ELA IRA ALEATORIZAR COM BASE EM ESTATISTICAS QUAIS INIMIGOS E
-// EM QUAIS QUANTDADES SURGIRAM, OBEDECENDO O LIMITE DE INIMIGOS E OS INIMIGOS DISPONIVEIS.
-//
-// -> ELA IRA GERAR UMA QUANTIDADE EXATA NA MEDIDA QUE USARA DE INIMIGOS PARA AS ONDAS EEMPLO:
-// CHUVA 1: 5 A INIMIGOS CHUVA 2: 10 A INIMIGOS -> CHUVA COM MAIOR QUANTIDADE DE INIMIGOS A -
-// - CHAVA 2 -> ENTÃO SERÁ GERADOS 10 INIMIGOS A.
-// -> TODOS OS INIMIGOS SERAM GERADOS E DESATIVADOS PARA SEREM ATIVADOS APENAS QUANDO A ONDA INICIAR.
-// 
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+
+// ☁️ ☁️ CLOUD I.A ☁️ ☁️
+//
+// CONCEITO GERAL:
+// Responsável pela gestão completa dos inimigos e do nível de desafio.
+// A lógica é baseada em uma analogia climática:
+//
+// - Nuvem   = Sistema de controle (IA)
+// - Chuva   = Ondas de inimigos
+// - Clima   = Dificuldade / comportamento do dia
+//
+// ==========================================================
+// PART 01 - COLETA DE DADOS
+// ==========================================================
+// A nuvem coleta e armazena informações antes de iniciar:
+//
+// • Jogador
+// • Chuvas (ondas disponíveis)
+// • Cenário atual
+// • Castelo
+//
+// ==========================================================
+// PART 02 - PLANEJAMENTO DO DIA
+// ==========================================================
+// A nuvem define como será o "dia":
+//
+// • Quantidade de ondas
+// • Intensidade de cada onda
+// • Tipos de inimigos
+// • Quantidade por tipo
+//
+// Regras:
+//
+// • A geração é baseada em estatísticas + aleatoriedade controlada
+// • Respeita limite de inimigos e tipos disponíveis
+//
+// Exemplo:
+//
+// CHUVA 1 → 5 inimigos tipo A
+// CHUVA 2 → 10 inimigos tipo A
+//
+// Resultado:
+// → Serão criados 10 inimigos tipo A (maior necessidade)
+//
+// • Todos os inimigos são pré-gerados e DESATIVADOS
+// • Serão ativados apenas quando a onda iniciar
+//
+// ==========================================================
+// PART 03 - EXECUÇÃO
+// ==========================================================
+//
+// Após definir:
+//
+// • Como é o dia
+// • Como serão as chuvas
+// • Qual a chuva atual
+//
+// A nuvem:
+//
+// • Ativa e desativa inimigos conforme necessário
+//
+// IMPORTANTE:
+// Os inimigos da onda atual já devem estar previamente criados.
+//
 
 public class CloudAI : MonoBehaviour
 {
-    // PART 01: LOCALIZA O JOGADOR COM A TAG "Player"
+    // ======================================================
+    // PART 01 - LOCALIZAÇÃO DO JOGADOR
+    // ======================================================
 
-    public string playerTag = "Player";  // <- NOME DA TAG NO OBJETO DEDICADO AO JOGADOR
-    public GameObject player;            // <- REFERÊNCIA AO JOGADOR ENCONTRADO
+    [Header("Player Settings")]
 
-   
-    void Findplayer() // LOCALIZA O JOGADOR CASO NÃO ACHE NENHUM OU ENCONTRE MAIS DE UM AVISA VIA LOG.
-    { 
-     if 
-     (ObjectLocator.findtag(playerTag, out player)) // CASO NÃO ENCONTRE NENHUM OBJETO COM A TAG "Player" Retorna False
-      Debug.Log
-                ($"[LocalizarJogador] Jogador encontrado: {player.name}", player);
+    public string playerTag = "Player";   // Nome da tag usada para identificar o jogador
+    public GameObject player;             // Referência ao objeto do jogador encontrado
 
-    }
-    // -------------------------------------- PART 01: COLETA DE JOGADOR -------------------- //
-
-    // PART 01: COLETA "CHUVAS" / ONDAS DISPONIVEIS
-    public List<Chuvas_Object> Cloud_List = new List<Chuvas_Object>();   // <-  REFERÊNCIA AS CHUVAS ENCONTRADAS
-
-   
-    List<Chuvas_Object> FindClouds() // LOCALIZA O NUMERO DE CHUVAS E INDENTIFICA-AS PELO NOME
+    /// <summary>
+    /// Localiza o jogador com base na tag definida.
+    /// Caso encontre, armazena a referência e exibe no log.
+    /// </summary>
+    void Findplayer()
     {
-        Cloud_List = ObjectLocator.LocalizarTodosOsChuvas(); // <- LOCALIZA A CHUVA DE INIMIGOS UM POR UM EM: Assets > Resorces > Chuvas.
-        string names = string.Join(", ", Cloud_List.ConvertAll(c => c.name));
-        Debug.Log($"[LocalizarChuvas] Chuvas encontradas: {Cloud_List.Count} | {names}");
+        // Tenta localizar o jogador via ObjectLocator
+        if (ObjectLocator.findtag(playerTag, out player))
+        {
+            Debug.Log($"[LocalizarJogador] Jogador encontrado: {player.name}", player);
+        }
+        // Caso não encontre, o método interno já deve tratar/logar
+    }
 
-       if(Cloud_List != null)
+    // ======================================================
+    // PART 01 - COLETA DAS CHUVAS (ONDAS)
+    // ======================================================
+
+    [Header("Cloud / Rain Settings")]
+
+    public List<Rains_Object> Cloud_List = new List<Rains_Object>();
+    // Lista contendo todas as chuvas (ondas) disponíveis
+
+    /// <summary>
+    /// Localiza todas as chuvas disponíveis no sistema.
+    /// Busca geralmente dentro de: Assets > Resources > Chuvas
+    /// </summary>
+    /// <returns>Lista de chuvas encontradas ou null</returns>
+    List<Rains_Object> FindClouds()
+    {
+        // Localiza todas as chuvas usando o ObjectLocator
+        Cloud_List = ObjectLocator.LocalizarTodosOsChuvas();
+
+        // Converte nomes para debug (opcional)
+        string names = string.Join(", ", Cloud_List.ConvertAll(c => c.name));
+
+        //Debug.Log($"[LocalizarChuvas] Chuvas encontradas: {Cloud_List.Count} | {names}");
+
+        if (Cloud_List != null)
         {
             return Cloud_List;
         }
-       else
+        else
         {
             return null;
         }
     }
 
-    // -------------------------------------- PART 01: COLETA DE CHUVA -------------------- //
-    // DEFINIÇÃO DE RUN / DIA
-    // CADA DIA TERÁ UMA MÉDIA DE 10 CHUVAS, MAS NÃO SERÁ NECESSÁRIAMENTE CHUVAS PODERAM SER DIAS ENSOLARADOS = SEM INIMIGOS.
-    // PARA MOMENTOS SEM CHUVA HAVERÁ UM TIMER PARA DEFINIR O FIM
-    // PARA CADA CHUVA O FIM SERÁ DEFINIDO APENAS QUANDO O ULTIMO INIMIGO MORRER.
+    // ======================================================
+    // PART 02 - DEFINIÇÃO DO DIA (RUN)
+    // ======================================================
 
+    [Header("Generation Settings")]
+
+    // Quantidade mínima de "chuvas" (ondas) por dia
     public int MinimumRainfall = 10;
 
+    /// <summary>
+    /// Gera toda a estrutura do dia:
+    /// • Valida dados
+    /// • Define o comportamento das chuvas
+    /// • Gera inimigos (pré-instanciados e desativados)
+    /// </summary>
     public void GenerateRain()
     {
-        // VALIDA SE AS NUVENS SÃO EM QUANTIDADE CORRETA E PODE VAIDAR SE ESTÃO NOS PADRÕES ESPERADOS
-        GenerateRainFunctions.ValidateClouds(this, MinimumRainfall); 
-        // GERA AS NUVENS COM FORME AS QUANTIDADES ESPERADAS
-        GenerateRainFunctions.GenerateDay(Cloud_List,  MinimumRainfall);
-        // GERA OS INIMIGOS E OS DESATIVA PARA SEREM ATIVADOS APÓS O INICIO DA CHUVA EM JOGO
-        GenerateRainFunctions.GenerateRainForWave(Cloud_List);
+        // 1. Valida se as chuvas estão corretas e dentro dos padrões
+        GenerateRainFunctions.ValidateClouds(this, MinimumRainfall);
 
+        // 2. Define como será o dia (distribuição das chuvas)
+        GenerateRainFunctions.GenerateDay(Cloud_List, MinimumRainfall);
 
+        // 3. Gera os inimigos de cada onda (inicialmente desativados)
+        GenerateRainFunctions.GenerateRainForWave(Cloud_List, MinimumRainfall);
     }
 
+    // ======================================================
+    // CICLO DE VIDA
+    // ======================================================
 
     private void Awake()
     {
+        // 1. Localiza o jogador
         Findplayer();
+
+        // 2. Localiza as chuvas disponíveis
         FindClouds();
+
+        // 3. Gera o dia e estrutura das ondas
         GenerateRain();
     }
 }

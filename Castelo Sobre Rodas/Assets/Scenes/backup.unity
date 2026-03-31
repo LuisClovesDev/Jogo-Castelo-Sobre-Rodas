@@ -633,7 +633,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &450947158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1247,7 +1247,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eab84fa9d5d622646a582ba147ca713e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 4700020803714072564, guid: e32c01c008a2065449a4f59cf8d9275c, type: 3}
   enemyTypes:
   - {fileID: 11400000, guid: 81aed489ce9099944bf2f8e9c5d25f0e, type: 2}
   prewarmAmount: 20
@@ -1304,8 +1303,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 110, y: -25}
-  m_SizeDelta: {x: 200, y: 30}
+  m_AnchoredPosition: {x: 140, y: -25}
+  m_SizeDelta: {x: 250, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1398834843
 MonoBehaviour:
@@ -1959,7 +1958,6 @@ MonoBehaviour:
   playerTag: Player
   player: {fileID: 0}
   Cloud_List: []
-  CurrentRain: 0
   MinimumRainfall: 10
 --- !u!4 &1984253319
 Transform:

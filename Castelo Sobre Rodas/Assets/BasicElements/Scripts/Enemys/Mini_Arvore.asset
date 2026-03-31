@@ -19,4 +19,5 @@ MonoBehaviour:
   Dano: 5
   Valor_de_XP: 5
   Tamanho: 0.5
+  prefab: {fileID: 6856309790520553500, guid: e32c01c008a2065449a4f59cf8d9275c, type: 3}
   behaviorType: 0
