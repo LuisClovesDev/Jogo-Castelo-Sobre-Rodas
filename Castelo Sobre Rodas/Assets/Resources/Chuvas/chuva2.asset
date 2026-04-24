@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70eb721d224d0e2429a6dbed90027752, type: 3}
   m_Name: chuva2
   m_EditorClassIdentifier: 
-  nome_da_chuva: 
-  nivel_da_chuva: 0
-  enemiesnumber: 10
-  Creature:
-  - {fileID: 11400000, guid: 81aed489ce9099944bf2f8e9c5d25f0e, type: 2}
+  horde_name: 
+  horde_level: 0
+  number_of_enemies: 0
+  list_of_creatures:
+  - {fileID: 11400000, guid: f7ff1b96af4d85e42856a323a197fa92, type: 2}

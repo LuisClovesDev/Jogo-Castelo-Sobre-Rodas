@@ -73,13 +73,13 @@ public class ObjectLocator
     /// localizados na pasta Resources/Chuvas.
     /// </summary>
     /// <returns>Lista de chuvas encontradas</returns>
-    public static List<Rains_Object> LocalizarTodosOsChuvas()
+    public static List<Hordes_Object> Find_All_Hordes()
     {
         // Carrega todos os assets do tipo Rains_Object dentro da pasta "Chuvas"
-        Rains_Object[] encontrados = Resources.LoadAll<Rains_Object>("Chuvas");
+        Hordes_Object[] encontrados = Resources.LoadAll<Hordes_Object>("Chuvas");
 
         // Converte array para lista
-        List<Rains_Object> lista = new List<Rains_Object>();
+        List<Hordes_Object> lista = new List<Hordes_Object>();
         lista.AddRange(encontrados);
 
         return lista;
