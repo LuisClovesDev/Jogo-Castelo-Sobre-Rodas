@@ -9,13 +9,36 @@ public class Soldier : PlayableCharacter
         ApplyMovement(direction);
     }
 
+    private void Update()
+    {
+        if(Mouse.current.rightButton.wasPressedThisFrame)
+    {
+            Debug.Log("PRESSIONOU");
+            RightClickAction(true);
+        }
+
+        if (Mouse.current.rightButton.wasReleasedThisFrame)
+        {
+            Debug.Log("SOLTOU");
+            RightClickAction(false);
+        }
+    }
+
+    
+}
+
+    /*
     public void OnLeftClick(InputValue value)
     {
+        
         LeftClickAction(value.isPressed);
     }
 
-    public void OnRightClick(InputValue value)
+    public void OnRightClickAction(InputValue value)
     {
-        RightClickAction(value.isPressed);
+        Debug.Log("Método chamado");
+
+        Debug.Log("isPressed = " + value.isPressed);
     }
-}
+    */
+

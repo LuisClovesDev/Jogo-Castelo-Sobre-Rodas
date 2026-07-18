@@ -7,11 +7,20 @@ using UnityEngine;
 // ======================================================
 public class HORDES_ADMIN : MonoBehaviour
 {
+    //========================================#
+    // SINGLETON
+    //========================================#
+
+    public static HORDES_ADMIN Instance { get; private set; }
+
+
     // GERENCIAR OS INIMIGOS CRIADOS
 
     // IDENTIFICAR INIMIGOS CRIADOS
 
     public List<Enemy> Enemys = new List<Enemy>();
+
+    // -----------------------------------------------------
 
     public Dictionary<string, List<Enemy>> grupos = new Dictionary<string, List<Enemy>>();
     void Group_By_Name()
@@ -55,8 +64,16 @@ public class HORDES_ADMIN : MonoBehaviour
 
 
     }
-    void Awake()
+    private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+
         Enemy[] todos = Resources.FindObjectsOfTypeAll<Enemy>();
 
         foreach (Enemy e in todos)
@@ -70,6 +87,28 @@ public class HORDES_ADMIN : MonoBehaviour
         Debug.Log("Inimigos Encontrados: " + Enemys.Count);
         Group_By_Name();
         Print_Groups();
+    }
+
+    // REGISTER
+    public void Register(Enemy enemy)
+    {
+        if (!Enemys.Contains(enemy))
+        {
+            Enemys.Add(enemy);
+        }
+    }
+
+    // REMOVE
+
+    public void Unregister(Enemy enemy)
+    {
+        Enemys.Remove(enemy);
+    }
+
+    // ONLY READ
+    public IReadOnlyList<Enemy> GetEnemies()
+    {
+        return Enemys;
     }
 
 }

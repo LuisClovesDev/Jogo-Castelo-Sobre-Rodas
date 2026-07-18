@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR;
 
 public abstract class PlayableCharacter : MonoBehaviour
 {
@@ -11,6 +13,12 @@ public abstract class PlayableCharacter : MonoBehaviour
     public PlayerClass playerClass;
 
     private Vector2 moveDirection;
+
+    // HAND  MOVEMENT
+    public GameObject Hand;
+    public float Handvelocidade;
+    public float Handdistancia;
+    public Vector2 HandposicaoBase;
 
 
     protected virtual void Awake()
@@ -35,6 +43,7 @@ public abstract class PlayableCharacter : MonoBehaviour
         {
             if (direction.y > 0) return 2; else return 4;
         }
+
     }
 
 
@@ -48,16 +57,29 @@ public abstract class PlayableCharacter : MonoBehaviour
     protected virtual void FixedUpdate()
     {
         rigidBody.linearVelocity = moveDirection * playerClass.moveSpeed;
+        if (moveDirection.x != 0 || moveDirection.y != 0)
+        {
+            float HandoffsetY = Mathf.Sin(Time.time * Handvelocidade) * Handdistancia;
+            Hand.transform.localPosition =
+                HandposicaoBase + new Vector2(-0.38f, HandoffsetY);
+        }
     }
 
+
+
     // Hooks para inputs (serão sobrescritos)
-    protected virtual void LeftClickAction(bool pressed) { }
+
 
     protected virtual void RightClickAction(bool pressed)
     {
         if (pressed)
+        {
             playerClass.specialSkill.OnPerformed(this);
+        }
         else
+        {
             playerClass.specialSkill.OnCanceled(this);
+        }
     }
+
 }

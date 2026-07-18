@@ -126,6 +126,9 @@ public class HordeManager : MonoBehaviour
 
     public int minimumHordes = 10;
 
+    public List<GenerateHordesClass> GeneratedHordes =
+    new List<GenerateHordesClass>();
+
     /// <summary>
     /// Gera toda a estrutura das hordas:
     /// • Validação
@@ -138,10 +141,13 @@ public class HordeManager : MonoBehaviour
         HordeFunctions.ValidateHordes(this, minimumHordes);
 
         // 2. Planeja as hordas do jogo
-        HordeFunctions.PlanHordes(HordeList, minimumHordes);
+       // HordeFunctions.PlanHordes(HordeList, minimumHordes);
 
         // 3. Cria inimigos (desativados)
-        HordeFunctions.GenerateEnemies(HordeList, minimumHordes);
+        GeneratedHordes =
+     HordeFunctions.GenerateEnemies(
+         HordeList,
+         minimumHordes);
 
         // 4. Inicia o sistema de controle das hordas
         Invoke(nameof(StartHordeControl), 5f);

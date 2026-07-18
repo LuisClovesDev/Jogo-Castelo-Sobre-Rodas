@@ -88,27 +88,41 @@ public class HordeFunctions : MonoBehaviour
     /// <summary>
     /// Instancia os inimigos da horda atual (desativados).
     /// </summary>
-    public static void GenerateEnemies(List<Hordes_Object> hordes, int enemiesPerHorde)
+    public static List<GenerateHordesClass> GenerateEnemies(
+     List<Hordes_Object> hordes,
+     int enemiesPerHorde)
     {
-        int currentHorde = 0;
+        List<GenerateHordesClass> generatedHordes =
+     new List<GenerateHordesClass>();
 
-        var plannedHordes = PlanHordes(hordes, enemiesPerHorde);
+        var plannedHordes =
+    PlanHordes(hordes, enemiesPerHorde);
 
-        var currentEnemyList = plannedHordes[currentHorde];
-
-        Debug.Log($"[GenerateEnemies] Inimigos gerados: {currentEnemyList.Count}");
-
-        for (int i = 0; i < currentEnemyList.Count; i++)
+        for (int h = 0; h < plannedHordes.Count; h++)
         {
-            var enemyData = currentEnemyList[i];
+            GenerateHordesClass generatedHorde =
+              new GenerateHordesClass();
 
-            GameObject enemy = GameObject.Instantiate(enemyData.prefab);
+            generatedHorde.HordeIndex = h;
+            var currentEnemyList =
+             plannedHordes[h];
 
-            Debug.Log($"[Spawn] Inimigo criado: {enemyData.Nome_do_Inimigo}");
+            for (int i = 0; i < currentEnemyList.Count; i++)
+            {
+                var enemyData = currentEnemyList[i];
 
-            // Importante: inimigos começam desativados
-            enemy.SetActive(false);
+                GameObject enemy =
+                    GameObject.Instantiate(enemyData.prefab);
+
+                enemy.SetActive(false);
+
+                generatedHorde.Enemies.Add(enemy);
+            }
+            generatedHordes.Add(generatedHorde);
+            
         }
+        return generatedHordes;
+
     }
 
     // ======================================================
@@ -130,6 +144,54 @@ public class HordeFunctions : MonoBehaviour
         else
         {
             Debug.LogWarning("[Nuvem_Admin] Objeto não encontrado!");
+        }
+    }
+}
+
+
+// ======================================================
+// GENERATED HORDES CLASS
+// ======================================================
+//
+// Responsabilidade:
+//
+// • Armazenar todos os GameObjects pertencentes a uma horda.
+// • Servir como estrutura para o HordeController.
+//
+// Futuramente poderá armazenar:
+//
+// • Estado da horda
+// • Tempo restante
+// • Quantidade de inimigos vivos
+// • Dados estatísticos
+//
+// ======================================================
+
+[System.Serializable]
+public class GenerateHordesClass
+{
+    //========================================#
+    // HORDE DATA
+    //========================================#
+
+    public int HordeIndex;
+
+    //========================================#
+    // ENEMIES
+    //========================================#
+
+    public List<GameObject> Enemies =
+        new List<GameObject>();
+
+    //========================================#
+    // COUNT
+    //========================================#
+
+    public int EnemyCount
+    {
+        get
+        {
+            return Enemies.Count;
         }
     }
 }

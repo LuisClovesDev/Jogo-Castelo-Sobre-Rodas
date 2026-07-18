@@ -16,6 +16,15 @@ public class Enemy : MonoBehaviour
 
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player").transform;
+
+        if (HORDES_ADMIN.Instance != null)
+            HORDES_ADMIN.Instance.Register(this);
+    }
+
+    void OnDisable()
+    {
+        if (HORDES_ADMIN.Instance != null)
+            HORDES_ADMIN.Instance.Unregister(this);
     }
 
     int frameSkip = 2;

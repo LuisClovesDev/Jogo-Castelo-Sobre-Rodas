@@ -13,6 +13,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "RightClickAction",
+                    "type": "Button",
+                    "id": "f7d213f0-230b-4a39-b652-a852ce0b2db7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -70,6 +79,17 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "368b4e78-f50f-45bf-83b4-3355ddc10c58",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";keybord",
+                    "action": "RightClickAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
